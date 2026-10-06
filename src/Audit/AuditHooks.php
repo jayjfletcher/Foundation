@@ -55,11 +55,14 @@ final class AuditHooks
     /**
      * How to name a model of this class, or a subclass, in an entry.
      *
-     * @param  class-string  $class
-     * @param  Closure(Model): ?string  $label
+     * @template TModel of Model
+     *
+     * @param  class-string<TModel>  $class
+     * @param  Closure(TModel): ?string  $label
      */
     public function label(string $class, Closure $label): self
     {
+        /** @var Closure(Model): ?string $label */
         $this->labels[$class] = $label;
 
         return $this;
@@ -69,11 +72,14 @@ final class AuditHooks
      * Extra fields to snapshot for a model of this class, such as related
      * records whose changes belong in its diff.
      *
-     * @param  class-string  $class
-     * @param  Closure(Model): array<string, mixed>  $snapshot
+     * @template TModel of Model
+     *
+     * @param  class-string<TModel>  $class
+     * @param  Closure(TModel): array<string, mixed>  $snapshot
      */
     public function snapshot(string $class, Closure $snapshot): self
     {
+        /** @var Closure(Model): array<string, mixed> $snapshot */
         $this->snapshots[$class][] = $snapshot;
 
         return $this;

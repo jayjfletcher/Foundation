@@ -22,7 +22,7 @@ use Laravel\Mcp\ResponseFactory;
  * Mirrors the HTTP request's `persist()` pattern so tools stay one line and
  * both surfaces resolve the same Actions. Parity is then structural rather than
  * something to maintain by hand. Everything a call does is marked as coming
- * from the `mcp` surface.
+ * from the `mcp` surface, or stays `cortex` when a Cortex agent made it.
  *
  * The request finds its package by namespace. With the package's
  * `authorization` config key on, every call acts as the authenticated user
@@ -34,7 +34,10 @@ abstract class Request extends McpRequest
 
     final public function persist(): Response|ResponseFactory
     {
-        return app(Surface::class)->using('mcp', function (): Response|ResponseFactory {
+        $surface = app(Surface::class);
+
+        // A Cortex agent calling the tool stays `cortex`; any other client is `mcp`.
+        return $surface->using($surface->current() === 'cortex' ? 'cortex' : 'mcp', function (): Response|ResponseFactory {
             try {
                 if (! $this->authorize()) {
                     return Response::error('Unauthorized.');

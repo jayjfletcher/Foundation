@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use JayI\Foundation\Support\Surface;
 use JayI\Foundation\Tests\Fixtures\Acme\Mcp\AcmeServer;
 use JayI\Foundation\Tests\Fixtures\Acme\Mcp\Tools\ProbeTool;
 
@@ -18,4 +19,13 @@ it('surfaces package exceptions to the caller', function (): void {
 
 it('keeps the declared description while cortex is absent', function (): void {
     expect(app(ProbeTool::class)->description())->toBe('Report the surface the call came through.');
+});
+
+it('keeps the cortex surface when an agent calls the tool', function (): void {
+    $surface = app(Surface::class);
+    $surface->enter('cortex');
+
+    AcmeServer::tool(ProbeTool::class)->assertStructuredContent(['surface' => 'cortex', 'package' => 'acme']);
+
+    $surface->leave();
 });
