@@ -1,0 +1,213 @@
+<?php
+
+declare(strict_types=1);
+
+namespace JayI\Foundation\Cortex;
+
+use Illuminate\Contracts\Config\Repository as Config;
+use Illuminate\Contracts\Container\Container;
+use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\Foundation\Application;
+use JayI\Cortex\CortexServiceProvider;
+use JayI\Cortex\Domains\McpServer\Services\McpInstructionOverrides;
+use JayI\Cortex\Domains\McpServer\Services\McpServerRegistry;
+use JayI\Cortex\Domains\Tool\Services\ToolDescriptionOverrides;
+use JayI\Cortex\Domains\Tool\Services\ToolRegistry;
+use JayI\Foundation\Packages\Package;
+use JayI\Foundation\Support\Surface;
+use Laravel\Ai\Events\InvokingTool;
+use Laravel\Ai\Events\ToolFailed;
+use Laravel\Ai\Events\ToolInvoked;
+use Laravel\Ai\Tools\ToolNameResolver;
+use Laravel\Mcp\Server\Tool;
+
+/**
+ * Connects a package's MCP server to Cortex, when Cortex is installed.
+ *
+ * - The server is registered with Cortex, so its instructions can be
+ *   overridden with versioned, publishable content.
+ * - Each tool is registered in Cortex's tool registry under its own name,
+ *   tagged (by default with the server's name), so Cortex agents can use it,
+ *   and its description can be overridden the same way.
+ * - Changes an agent makes through one of the tools record `cortex` as their
+ *   surface, so the audit log tells agents and people apart.
+ *
+ * Cortex is optional. Nothing here runs unless its service provider is
+ * loaded and the package's `cortex.enabled` config key is true, and every
+ * Cortex class is referenced only behind that check — so servers and tools
+ * cannot extend Cortex's own base classes, and do its lookups here instead.
+ */
+final readonly class CortexIntegration
+{
+    public function __construct(
+        private Application $app,
+        private Config $config,
+        private Package $package,
+    ) {}
+
+    public static function for(Package $package): self
+    {
+        return new self(app(Application::class), app(Config::class), $package);
+    }
+
+    public function active(): bool
+    {
+        return $this->package->server !== null
+            && $this->config->get($this->package->configKey('cortex.enabled'), true) === true
+            && class_exists(CortexServiceProvider::class)
+            && $this->app->getProvider(CortexServiceProvider::class) !== null;
+    }
+
+    /**
+     * Register with Cortex's registries as they are first resolved, so an
+     * application that never touches Cortex pays nothing.
+     */
+    public function register(): void
+    {
+        if (! $this->active() || $this->package->server === null) {
+            return;
+        }
+
+        $server = $this->package->server;
+
+        $this->app->afterResolving(McpServerRegistry::class, function (McpServerRegistry $servers) use ($server): void {
+            if (! $servers->has($this->serverName())) {
+                $servers->register($this->serverName(), $server);
+            }
+        });
+
+        $this->app->afterResolving(ToolRegistry::class, function (ToolRegistry $tools, Container $container): void {
+            foreach ($this->tools() as $class) {
+                $tool = $container->make($class);
+
+                if ($tool instanceof Tool && ! $tools->has($tool->name())) {
+                    $tools->register($tool->name(), $class, $this->tags());
+                }
+            }
+        });
+
+        $this->recordAgentCalls();
+    }
+
+    /**
+     * The name the server is registered under in Cortex.
+     */
+    public function serverName(): string
+    {
+        return $this->config->string($this->package->configKey('cortex.server'), $this->package->key);
+    }
+
+    /**
+     * The tags the tools are grouped under in Cortex.
+     *
+     * @return list<string>
+     */
+    public function tags(): array
+    {
+        /** @var list<string> $tags */
+        $tags = $this->config->get($this->package->configKey('cortex.tags'), [$this->serverName()]);
+
+        return $tags;
+    }
+
+    /**
+     * The tools offered to Cortex: all of the server's `TOOLS`, or those
+     * named in the package's `cortex.tools` config key.
+     *
+     * @return array<int, class-string<Tool>>
+     */
+    public function tools(): array
+    {
+        $all = $this->allTools();
+
+        /** @var array<int, string>|null $only */
+        $only = $this->config->get($this->package->configKey('cortex.tools'));
+
+        if ($only === null) {
+            return $all;
+        }
+
+        return array_values(array_filter(
+            $all,
+            fn (string $class): bool => in_array($this->app->make($class)->name(), $only, true),
+        ));
+    }
+
+    /**
+     * The published instructions override for the server, if any.
+     */
+    public function instructions(): ?string
+    {
+        if (! $this->active() || $this->package->server === null) {
+            return null;
+        }
+
+        $name = $this->app->make(McpServerRegistry::class)->nameFor($this->package->server);
+
+        return $name === null ? null : $this->app->make(McpInstructionOverrides::class)->for($name);
+    }
+
+    /**
+     * The published description override for a tool, if any.
+     */
+    public function description(string $tool): ?string
+    {
+        return $this->active() ? $this->app->make(ToolDescriptionOverrides::class)->for($tool) : null;
+    }
+
+    /**
+     * Mark changes an agent makes through one of the package's tools with
+     * the `cortex` surface, for exactly as long as the tool runs.
+     */
+    private function recordAgentCalls(): void
+    {
+        if (! class_exists(InvokingTool::class)) {
+            return;
+        }
+
+        $events = $this->app->make(Dispatcher::class);
+
+        $events->listen(InvokingTool::class, function (InvokingTool $event): void {
+            if ($this->owns(ToolNameResolver::resolve($event->tool))) {
+                $this->app->make(Surface::class)->enter('cortex');
+            }
+        });
+
+        $leave = function (ToolInvoked|ToolFailed $event): void {
+            if ($this->owns(ToolNameResolver::resolve($event->tool))) {
+                $this->app->make(Surface::class)->leave();
+            }
+        };
+
+        $events->listen(ToolInvoked::class, $leave);
+        $events->listen(ToolFailed::class, $leave);
+    }
+
+    private function owns(string $tool): bool
+    {
+        foreach ($this->allTools() as $class) {
+            if ($this->app->make($class)->name() === $tool) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @return array<int, class-string<Tool>>
+     */
+    private function allTools(): array
+    {
+        $server = $this->package->server;
+
+        if ($server === null || ! defined($server.'::TOOLS')) {
+            return [];
+        }
+
+        /** @var array<int, class-string<Tool>> $tools */
+        $tools = constant($server.'::TOOLS');
+
+        return $tools;
+    }
+}

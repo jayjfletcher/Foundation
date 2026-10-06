@@ -1,0 +1,12 @@
+parameters:
+    level: 7
+    paths:
+        - src
+        - tests/Fixtures
+    tmpDir: build/phpstan
+    ignoreErrors:
+        # Cortex is optional and cannot be a dev dependency (it requires this
+        # package); every Cortex class is referenced behind an active() check.
+        -
+            message: '#JayI\\Cortex\\#'
+            path: src/Cortex/CortexIntegration.php

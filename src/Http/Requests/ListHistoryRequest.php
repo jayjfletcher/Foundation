@@ -1,0 +1,48 @@
+<?php
+
+declare(strict_types=1);
+
+namespace JayI\Foundation\Http\Requests;
+
+use Illuminate\Http\JsonResponse;
+use JayI\Foundation\Audit\History;
+use JayI\Foundation\Packages\Package;
+use JayI\Foundation\Packages\PackageRegistry;
+
+/**
+ * `GET {prefix}/history`: a package's audit entries, newest first, cursor
+ * paginated. The route names the package; see `loadHistoryRoutes()`.
+ */
+final class ListHistoryRequest extends Request
+{
+    public function authorize(): bool
+    {
+        return app(History::class)->allows($this->package(), $this->user(), $this->all());
+    }
+
+    public function rules(): array
+    {
+        return History::rules();
+    }
+
+    public function persist(): JsonResponse
+    {
+        $history = app(History::class);
+
+        if (! $history->available()) {
+            return new JsonResponse(['message' => 'No audit log is installed. Install jayi/audit to record history.'], 404);
+        }
+
+        /** @var array<string, mixed> $validated */
+        $validated = $this->validated();
+
+        return new JsonResponse($history->page($this->package(), $validated)->toArray());
+    }
+
+    protected function package(): Package
+    {
+        $key = $this->route('package');
+
+        return app(PackageRegistry::class)->get(is_string($key) ? $key : '');
+    }
+}
