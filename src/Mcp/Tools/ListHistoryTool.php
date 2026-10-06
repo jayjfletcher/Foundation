@@ -13,17 +13,22 @@ use Laravel\Mcp\ResponseFactory;
 /**
  * Base for a package's history tool: its audit entries, newest first.
  *
- * Each package adds a one-line subclass to its server's `TOOLS`, named for
- * the package so tool names stay unique - `ListKeystoneHistoryTool` is
+ * Each package adds a one-line subclass to its server's `TOOLS`. The tool is
+ * named for the package's key so names stay unique across servers:
  * `list-keystone-history-tool`.
  */
 abstract class ListHistoryTool extends Tool
 {
+    public function name(): string
+    {
+        return 'list-'.$this->package()->key.'-history-tool';
+    }
+
     public function description(): string
     {
         $package = $this->package();
         $declared = "List {$package->label}'s audit history, newest first: who did what, through which surface, and which fields changed. "
-            .'Pass subject_type and subject_id for one record\'s history. Cursor paginated. Needs jayi/audit installed.';
+            .'Pass subject_type and subject_id for one record\'s history. Cursor paginated. Needs jayi/keen installed.';
 
         return parent::description() === '' ? $declared : parent::description();
     }

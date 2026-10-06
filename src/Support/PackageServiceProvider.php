@@ -116,7 +116,7 @@ abstract class PackageServiceProvider extends ServiceProvider
 
     /**
      * Serve `GET {prefix}/history`: the package's audit entries, newest first,
-     * inside its JSON API route group. Answers 404 while jayi/audit is not
+     * inside its JSON API route group. Answers 404 while jayi/keen is not
      * installed.
      */
     protected function loadHistoryRoutes(): void

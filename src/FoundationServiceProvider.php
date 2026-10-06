@@ -16,7 +16,7 @@ use JayI\Foundation\Support\Surface;
  *
  * It has no routes, views or config of its own: it holds the package
  * registry, the hooks packages give the audit log, the current surface, and
- * a null audit trail until jayi/audit binds a real one.
+ * a null audit trail until jayi/keen binds a real one.
  */
 class FoundationServiceProvider extends ServiceProvider
 {

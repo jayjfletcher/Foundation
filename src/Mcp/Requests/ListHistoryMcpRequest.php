@@ -29,7 +29,7 @@ final class ListHistoryMcpRequest extends Request
         $history = app(History::class);
 
         if (! $history->available()) {
-            return Response::error('No audit log is installed, so there is no history to show. Install jayi/audit to record it.');
+            return Response::error('No audit log is installed, so there is no history to show. Install jayi/keen to record it.');
         }
 
         $page = $history->page($this->package(), $validated);

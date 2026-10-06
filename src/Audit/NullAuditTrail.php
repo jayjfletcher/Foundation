@@ -10,7 +10,7 @@ use JayI\Foundation\Audit\Data\AuditPage;
 
 /**
  * The audit trail while no audit log is installed: never available, always
- * empty. jayi/audit replaces the binding.
+ * empty. jayi/keen replaces the binding.
  */
 final class NullAuditTrail implements AuditTrail
 {

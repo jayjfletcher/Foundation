@@ -30,7 +30,7 @@ final class ListHistoryRequest extends Request
         $history = app(History::class);
 
         if (! $history->available()) {
-            return new JsonResponse(['message' => 'No audit log is installed. Install jayi/audit to record history.'], 404);
+            return new JsonResponse(['message' => 'No audit log is installed. Install jayi/keen to record history.'], 404);
         }
 
         /** @var array<string, mixed> $validated */

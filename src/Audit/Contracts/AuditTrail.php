@@ -11,7 +11,7 @@ use JayI\Foundation\Audit\Data\AuditPage;
  * Read access to the audit log, whichever package keeps it.
  *
  * Every package and the Atrium dashboard read history through this contract,
- * so none of them depends on jayi/audit. Until it is installed the shared
+ * so none of them depends on jayi/keen. Until it is installed the shared
  * runtime binds `NullAuditTrail`, which is never available and always empty.
  */
 interface AuditTrail
