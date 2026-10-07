@@ -66,3 +66,13 @@ it('builds filters fluently', function (): void {
         ->and($filter->limit)->toBe(1)
         ->and($filter->cursor)->toBe('c');
 });
+
+it('filters by scope', function (): void {
+    $scope = new WidgetModel;
+    $scope->id = 3;
+
+    $filter = AuditFilter::make()->scope($scope);
+
+    expect($filter->scopeType)->toBe(WidgetModel::class)
+        ->and($filter->scopeId)->toBe('3');
+});

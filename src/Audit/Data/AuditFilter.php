@@ -19,6 +19,10 @@ final class AuditFilter
 
     public private(set) ?string $subjectId = null;
 
+    public private(set) ?string $scopeType = null;
+
+    public private(set) ?string $scopeId = null;
+
     public private(set) ?string $action = null;
 
     public private(set) ?string $actorId = null;
@@ -57,6 +61,17 @@ final class AuditFilter
     {
         $this->subjectType = $type;
         $this->subjectId = $id;
+
+        return $this;
+    }
+
+    /**
+     * Only entries scoped to this model, such as an organization.
+     */
+    public function scope(?Model $scope): self
+    {
+        $this->scopeType = $scope?->getMorphClass();
+        $this->scopeId = $scope === null ? null : (string) $scope->getKey();
 
         return $this;
     }
