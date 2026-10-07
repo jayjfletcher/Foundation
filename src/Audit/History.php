@@ -54,8 +54,8 @@ final readonly class History
     }
 
     /**
-     * Whether the user may read this history: the package's own check, if it
-     * set one, and then `view` on the subject when one is named (`viewAny` on its class once the model is gone), otherwise the
+     * Whether the user may read this history: the package's own rule, when
+     * it set one; otherwise `view` on the subject when one is named (`viewAny` on its class once the model is gone), otherwise the
      * `viewAuditLog` ability when the application defines it.
      *
      * @param  array<string, mixed>  $input
@@ -64,11 +64,15 @@ final readonly class History
     {
         $authorizer = Authorizer::for($package);
 
-        if (! $authorizer->authenticated($user) || ! $package->allowsHistory($user)) {
+        if (! $authorizer->authenticated($user)) {
             return false;
         }
 
         $subject = $this->subject($input);
+
+        if ($package->decidesHistory()) {
+            return $package->allowsHistory($user, $subject);
+        }
 
         if ($subject !== null) {
             return $authorizer->can($user, $subject instanceof Model ? 'view' : 'viewAny', $subject);

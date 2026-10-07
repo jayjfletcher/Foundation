@@ -87,6 +87,7 @@ Foundation defines how packages talk to an audit log without depending on one. [
 - `Audit\Contracts\AuditTrail`: read entries with an `AuditFilter`, get an `AuditPage` of `AuditEntry` values.
 - `Audit\Contracts\Auditable`: an optional interface for action events that name their subject and context.
 - `Audit\AuditHooks`: what a package teaches the log about its models (labels, snapshot extras, subject and scope pickers, context, redacted fields).
+- `Package::authorizeHistory()` lets a package that does not authorize through policies decide who reads its history.
 - `Audit\History` plus `loadHistoryRoutes()` and `Mcp\Tools\ListHistoryTool`: every package serves its own history over HTTP and MCP. Both answer "not installed" while Keen is absent.
 
 ## Testing

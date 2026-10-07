@@ -6,6 +6,7 @@ namespace JayI\Foundation\Packages;
 
 use Closure;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Laravel\Mcp\Server;
 
@@ -38,10 +39,10 @@ final class Package
     public private(set) bool $authorization = false;
 
     /**
-     * An extra check before anyone reads the package's history, on top of
-     * the subject's `view` policy and the `viewAuditLog` ability.
+     * The package's own rule for who may read its history, in place of the
+     * subject's `view` policy and the `viewAuditLog` ability.
      *
-     * @var (Closure(?Authenticatable): bool)|null
+     * @var (Closure(?Authenticatable, Model|class-string<Model>|null): bool)|null
      */
     private ?Closure $historyCheck = null;
 
@@ -83,10 +84,13 @@ final class Package
     }
 
     /**
-     * Guard the package's history with its own check as well, such as the
-     * ability that guards the rest of its API.
+     * Decide who may read the package's history with the package's own rule,
+     * such as the permission that guards the rest of its API, for a package
+     * that does not authorize through policies. The check receives the user
+     * and the subject asked about: a model, its class once the model is gone,
+     * or null for the whole history.
      *
-     * @param  Closure(?Authenticatable): bool  $check
+     * @param  Closure(?Authenticatable, Model|class-string<Model>|null): bool  $check
      */
     public function authorizeHistory(Closure $check): self
     {
@@ -95,12 +99,20 @@ final class Package
         return $this;
     }
 
-    /**
-     * Whether the package's own history check lets the user through.
-     */
-    public function allowsHistory(?Authenticatable $user): bool
+    public function decidesHistory(): bool
     {
-        return $this->historyCheck === null || ($this->historyCheck)($user) === true;
+        return $this->historyCheck !== null;
+    }
+
+    /**
+     * Whether the package's own history rule lets the user read about the
+     * subject. Without a rule, it does.
+     *
+     * @param  Model|class-string<Model>|null  $subject
+     */
+    public function allowsHistory(?Authenticatable $user, Model|string|null $subject = null): bool
+    {
+        return $this->historyCheck === null || ($this->historyCheck)($user, $subject) === true;
     }
 
     /**

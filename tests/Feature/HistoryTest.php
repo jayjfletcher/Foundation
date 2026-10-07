@@ -121,3 +121,24 @@ it('applies the package own history check', function (): void {
 
     $this->getJson('/acme/history')->assertForbidden();
 });
+
+it('lets the package rule decide in place of policies', function (): void {
+    installAuditTrail();
+    config()->set('acme.authorization', true);
+    $widget = WidgetModel::query()->create(['name' => 'Sprocket']);
+    $user = User::forceCreate(['name' => 'Ada', 'email' => 'ada@example.com', 'password' => 'secret']);
+    $seen = [];
+
+    // No widget policy exists, so the policy check alone would refuse.
+    app(PackageRegistry::class)->get('acme')->authorizeHistory(function (?User $who, mixed $subject) use (&$seen): bool {
+        $seen[] = $subject;
+
+        return $who !== null;
+    });
+
+    $this->actingAs($user)
+        ->getJson('/acme/history?subject_type='.urlencode(WidgetModel::class).'&subject_id='.$widget->id)
+        ->assertOk();
+
+    expect($seen[0])->toBeInstanceOf(WidgetModel::class);
+});
