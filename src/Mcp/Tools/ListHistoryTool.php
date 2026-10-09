@@ -15,7 +15,7 @@ use RefactorCircus\Foundation\Mcp\Tool;
  *
  * Each package adds a one-line subclass to its server's `TOOLS`. The tool is
  * named for the package's key so names stay unique across servers:
- * `list-keystone-history-tool`.
+ * `list-showroom-history-tool`.
  */
 abstract class ListHistoryTool extends Tool
 {

@@ -1,6 +1,6 @@
 # Foundation
 
-The shared, headless runtime for the Refactor Circus package suite (Atrium, Cortex, Impex, Keystone, Keen, PennantPlus, Polycart, Roster).
+The shared, headless runtime for the Refactor Circus package suite (Atrium, Cortex, Impex, Keen, PennantPlus, Polycart, Roster, Showroom).
 
 Foundation has no routes, views or config of its own. It holds the base classes and contracts every package used to copy, so each package works the same way and works without the Atrium dashboard.
 
@@ -20,28 +20,28 @@ A package's main service provider extends `PackageServiceProvider`, describes th
 use RefactorCircus\Foundation\Packages\Package;
 use RefactorCircus\Foundation\Support\PackageServiceProvider;
 
-final class KeystoneServiceProvider extends PackageServiceProvider
+final class ShowroomServiceProvider extends PackageServiceProvider
 {
     protected function definition(): Package
     {
-        return Package::make('keystone', 'RefactorCircus\Keystone')
-            ->label('Keystone')
-            ->server(KeystoneServer::class);
+        return Package::make('showroom', 'RefactorCircus\Showroom')
+            ->label('Showroom')
+            ->server(ShowroomServer::class);
     }
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/keystone.php', 'keystone');
+        $this->mergeConfigFrom(__DIR__.'/../config/showroom.php', 'showroom');
         $this->registerPackage();
         $this->app->register(DomainServiceProvider::class);
     }
 
     public function boot(): void
     {
-        $this->registerPolicies();      // keystone.policies
-        $this->registerMcpServer();     // keystone.mcp.web / keystone.mcp.local
-        $this->registerCortex();        // keystone.cortex.*, when Cortex is installed
-        $this->registerAtriumPlugin(KeystonePlugin::class); // keystone.ui.enabled, when Atrium is installed
+        $this->registerPolicies();      // showroom.policies
+        $this->registerMcpServer();     // showroom.mcp.web / showroom.mcp.local
+        $this->registerCortex();        // showroom.cortex.*, when Cortex is installed
+        $this->registerAtriumPlugin(ShowroomPlugin::class); // showroom.ui.enabled, when Atrium is installed
         $this->loadHistoryRoutes();     // GET {prefix}/history
     }
 }
@@ -53,12 +53,12 @@ Every base class finds its package by namespace, through the `PackageRegistry`, 
 return [
     'authorization' => false,
     'policies' => [/* Model::class => Policy::class */],
-    'routes' => ['enabled' => true, 'prefix' => 'api/keystone', 'middleware' => ['api']],
+    'routes' => ['enabled' => true, 'prefix' => 'api/showroom', 'middleware' => ['api']],
     'mcp' => [
-        'web' => ['enabled' => false, 'route' => 'mcp/keystone', 'middleware' => []],
-        'local' => ['enabled' => false, 'handle' => 'keystone'],
+        'web' => ['enabled' => false, 'route' => 'mcp/showroom', 'middleware' => []],
+        'local' => ['enabled' => false, 'handle' => 'showroom'],
     ],
-    'cortex' => ['enabled' => true, 'server' => 'keystone', 'tools' => null, 'tags' => null],
+    'cortex' => ['enabled' => true, 'server' => 'showroom', 'tools' => null, 'tags' => null],
     'ui' => ['enabled' => true],
 ];
 ```

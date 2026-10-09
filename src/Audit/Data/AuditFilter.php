@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Which audit entries to read, and how many.
  *
- *     AuditFilter::make()->source('keystone')->subject($product)->limit(20);
+ *     AuditFilter::make()->source('showroom')->subject($product)->limit(20);
  */
 final class AuditFilter
 {

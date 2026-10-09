@@ -14,12 +14,12 @@ use Laravel\Mcp\Server;
  * One package of the suite, as the shared runtime knows it.
  *
  * The key names the package's config file, route names and audit source
- * (`keystone`); the namespace is how a class is traced back to the package
+ * (`showroom`); the namespace is how a class is traced back to the package
  * that owns it, so base classes find their package without being told.
  *
- *     Package::make('keystone', 'RefactorCircus\Keystone')
- *         ->label('Keystone')
- *         ->server(KeystoneServer::class);
+ *     Package::make('showroom', 'RefactorCircus\Showroom')
+ *         ->label('Showroom')
+ *         ->server(ShowroomServer::class);
  */
 final class Package
 {
