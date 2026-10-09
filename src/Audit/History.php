@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Audit;
+namespace RefactorCircus\Keystone\Audit;
 
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use RefactorCircus\Foundation\Audit\Contracts\AuditTrail;
-use RefactorCircus\Foundation\Audit\Data\AuditFilter;
-use RefactorCircus\Foundation\Audit\Data\AuditPage;
-use RefactorCircus\Foundation\Auth\Authorizer;
-use RefactorCircus\Foundation\Packages\Package;
+use RefactorCircus\Keystone\Audit\Contracts\AuditTrail;
+use RefactorCircus\Keystone\Audit\Data\AuditFilter;
+use RefactorCircus\Keystone\Audit\Data\AuditPage;
+use RefactorCircus\Keystone\Auth\Authorizer;
+use RefactorCircus\Keystone\Packages\Package;
 
 /**
  * A package's own audit history, as its JSON API and MCP server serve it.

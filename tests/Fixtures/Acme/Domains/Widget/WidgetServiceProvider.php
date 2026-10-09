@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget;
+namespace RefactorCircus\Keystone\Tests\Fixtures\Acme\Domains\Widget;
 
 use Illuminate\Support\Facades\Route;
-use RefactorCircus\Foundation\Support\ServiceProvider;
-use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Http\Controllers\WidgetController;
+use RefactorCircus\Keystone\Support\ServiceProvider;
+use RefactorCircus\Keystone\Tests\Fixtures\Acme\Domains\Widget\Http\Controllers\WidgetController;
 
 final class WidgetServiceProvider extends ServiceProvider
 {

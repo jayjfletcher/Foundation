@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Cortex;
+namespace RefactorCircus\Keystone\Cortex;
 
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Contracts\Container\Container;
@@ -18,8 +18,8 @@ use RefactorCircus\Cortex\Domains\McpServer\Services\McpInstructionOverrides;
 use RefactorCircus\Cortex\Domains\McpServer\Services\McpServerRegistry;
 use RefactorCircus\Cortex\Domains\Tool\Services\ToolDescriptionOverrides;
 use RefactorCircus\Cortex\Domains\Tool\Services\ToolRegistry;
-use RefactorCircus\Foundation\Packages\Package;
-use RefactorCircus\Foundation\Support\Surface;
+use RefactorCircus\Keystone\Packages\Package;
+use RefactorCircus\Keystone\Support\Surface;
 
 /**
  * Connects a package's MCP server to Cortex, when Cortex is installed.

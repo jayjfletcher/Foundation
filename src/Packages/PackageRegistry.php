@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Packages;
+namespace RefactorCircus\Keystone\Packages;
 
-use RefactorCircus\Foundation\Exceptions\UnknownPackageException;
+use RefactorCircus\Keystone\Exceptions\UnknownPackageException;
 
 /**
  * Every package of the suite that is installed, by key.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Contracts;
+namespace RefactorCircus\Keystone\Contracts;
 
 /**
  * Fired when an action starts, before it does any work.

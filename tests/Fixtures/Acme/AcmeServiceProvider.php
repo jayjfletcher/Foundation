@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Tests\Fixtures\Acme;
+namespace RefactorCircus\Keystone\Tests\Fixtures\Acme;
 
-use RefactorCircus\Foundation\Packages\Package;
-use RefactorCircus\Foundation\Support\PackageServiceProvider;
-use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\WidgetServiceProvider;
-use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\AcmeServer;
+use RefactorCircus\Keystone\Packages\Package;
+use RefactorCircus\Keystone\Support\PackageServiceProvider;
+use RefactorCircus\Keystone\Tests\Fixtures\Acme\Domains\Widget\WidgetServiceProvider;
+use RefactorCircus\Keystone\Tests\Fixtures\Acme\Mcp\AcmeServer;
 
 /**
  * A package of the suite, as small as the shared runtime allows.

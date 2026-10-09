@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Mcp\Tools;
+namespace RefactorCircus\Keystone\Mcp\Tools;
 
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Mcp\Response;
 use Laravel\Mcp\ResponseFactory;
-use RefactorCircus\Foundation\Mcp\Requests\ListHistoryMcpRequest;
-use RefactorCircus\Foundation\Mcp\Tool;
+use RefactorCircus\Keystone\Mcp\Requests\ListHistoryMcpRequest;
+use RefactorCircus\Keystone\Mcp\Tool;
 
 /**
  * Base for a package's history tool: its audit entries, newest first.

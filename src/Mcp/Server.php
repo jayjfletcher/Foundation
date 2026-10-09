@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Mcp;
+namespace RefactorCircus\Keystone\Mcp;
 
 use Laravel\Mcp\Server as McpServer;
 use Laravel\Mcp\Server\ServerContext;
-use RefactorCircus\Foundation\Cortex\CortexIntegration;
-use RefactorCircus\Foundation\Packages\PackageRegistry;
+use RefactorCircus\Keystone\Cortex\CortexIntegration;
+use RefactorCircus\Keystone\Packages\PackageRegistry;
 
 /**
  * Base class for every package's MCP server.

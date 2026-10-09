@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Support;
+namespace RefactorCircus\Keystone\Support;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use RefactorCircus\Foundation\Packages\PackageRegistry;
+use RefactorCircus\Keystone\Packages\PackageRegistry;
 
 /**
  * Which surface the current call came through: `atrium`, `http`, `mcp`,

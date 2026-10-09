@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Actions;
+namespace RefactorCircus\Keystone\Actions;
 
 /**
  * Base class for mutating business logic across the suite.

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Tests\Fixtures\Acme\Exceptions;
+namespace RefactorCircus\Keystone\Tests\Fixtures\Acme\Exceptions;
 
-use RefactorCircus\Foundation\Exceptions\PackageException;
+use RefactorCircus\Keystone\Exceptions\PackageException;
 
 final class AcmeException extends PackageException
 {

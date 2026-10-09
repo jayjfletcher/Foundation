@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Support;
+namespace RefactorCircus\Keystone\Support;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Laravel\Mcp\Facades\Mcp;
-use RefactorCircus\Foundation\Cortex\CortexIntegration;
-use RefactorCircus\Foundation\FoundationServiceProvider;
-use RefactorCircus\Foundation\Http\Controllers\HistoryController;
-use RefactorCircus\Foundation\Packages\Package;
-use RefactorCircus\Foundation\Packages\PackageRegistry;
+use RefactorCircus\Keystone\Cortex\CortexIntegration;
+use RefactorCircus\Keystone\Http\Controllers\HistoryController;
+use RefactorCircus\Keystone\KeystoneServiceProvider;
+use RefactorCircus\Keystone\Packages\Package;
+use RefactorCircus\Keystone\Packages\PackageRegistry;
 
 /**
  * Base class for a package's main service provider.
@@ -42,7 +42,7 @@ abstract class PackageServiceProvider extends ServiceProvider
     {
         // Package discovery orders providers alphabetically, not by
         // dependency, so make sure the shared runtime is there first.
-        $this->app->register(FoundationServiceProvider::class);
+        $this->app->register(KeystoneServiceProvider::class);
 
         return $this->app->make(PackageRegistry::class)->register($this->definition());
     }

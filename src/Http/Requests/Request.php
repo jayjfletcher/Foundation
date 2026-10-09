@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Http\Requests;
+namespace RefactorCircus\Keystone\Http\Requests;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\FormRequest;
-use RefactorCircus\Foundation\Auth\Authorizer;
-use RefactorCircus\Foundation\Packages\Package;
-use RefactorCircus\Foundation\Packages\PackageRegistry;
+use RefactorCircus\Keystone\Auth\Authorizer;
+use RefactorCircus\Keystone\Packages\Package;
+use RefactorCircus\Keystone\Packages\PackageRegistry;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

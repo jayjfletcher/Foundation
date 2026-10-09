@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Tests;
+namespace RefactorCircus\Keystone\Tests;
 
 use Laravel\Mcp\Server\McpServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use RefactorCircus\Foundation\FoundationServiceProvider;
-use RefactorCircus\Foundation\Tests\Fixtures\Acme\AcmeServiceProvider;
+use RefactorCircus\Keystone\KeystoneServiceProvider;
+use RefactorCircus\Keystone\Tests\Fixtures\Acme\AcmeServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
@@ -18,7 +18,7 @@ abstract class TestCase extends Orchestra
     {
         return [
             McpServiceProvider::class,
-            FoundationServiceProvider::class,
+            KeystoneServiceProvider::class,
             AcmeServiceProvider::class,
         ];
     }

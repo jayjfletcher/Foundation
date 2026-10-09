@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use RefactorCircus\Foundation\Support\Surface;
-use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\AcmeServer;
-use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\Tools\ProbeTool;
+use RefactorCircus\Keystone\Support\Surface;
+use RefactorCircus\Keystone\Tests\Fixtures\Acme\Mcp\AcmeServer;
+use RefactorCircus\Keystone\Tests\Fixtures\Acme\Mcp\Tools\ProbeTool;
 
 it('marks mcp calls with the mcp surface', function (): void {
     AcmeServer::tool(ProbeTool::class)

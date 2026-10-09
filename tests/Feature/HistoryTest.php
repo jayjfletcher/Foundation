@@ -5,13 +5,13 @@ declare(strict_types=1);
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Gate;
-use RefactorCircus\Foundation\Audit\Contracts\AuditTrail;
-use RefactorCircus\Foundation\Audit\Data\AuditEntry;
-use RefactorCircus\Foundation\Packages\PackageRegistry;
-use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
-use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\AcmeServer;
-use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\Tools\ListAcmeHistoryTool;
-use RefactorCircus\Foundation\Tests\Fixtures\FakeAuditTrail;
+use RefactorCircus\Keystone\Audit\Contracts\AuditTrail;
+use RefactorCircus\Keystone\Audit\Data\AuditEntry;
+use RefactorCircus\Keystone\Packages\PackageRegistry;
+use RefactorCircus\Keystone\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
+use RefactorCircus\Keystone\Tests\Fixtures\Acme\Mcp\AcmeServer;
+use RefactorCircus\Keystone\Tests\Fixtures\Acme\Mcp\Tools\ListAcmeHistoryTool;
+use RefactorCircus\Keystone\Tests\Fixtures\FakeAuditTrail;
 
 function installAuditTrail(): FakeAuditTrail
 {

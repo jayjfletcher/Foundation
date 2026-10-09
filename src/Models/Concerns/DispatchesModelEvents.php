@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Models\Concerns;
+namespace RefactorCircus\Keystone\Models\Concerns;
 
 use Illuminate\Support\Str;
 

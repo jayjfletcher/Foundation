@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation;
+namespace RefactorCircus\Keystone;
 
 use Illuminate\Support\ServiceProvider;
-use RefactorCircus\Foundation\Audit\AuditHooks;
-use RefactorCircus\Foundation\Audit\Contracts\AuditTrail;
-use RefactorCircus\Foundation\Audit\NullAuditTrail;
-use RefactorCircus\Foundation\Packages\PackageRegistry;
-use RefactorCircus\Foundation\Support\Surface;
+use RefactorCircus\Keystone\Audit\AuditHooks;
+use RefactorCircus\Keystone\Audit\Contracts\AuditTrail;
+use RefactorCircus\Keystone\Audit\NullAuditTrail;
+use RefactorCircus\Keystone\Packages\PackageRegistry;
+use RefactorCircus\Keystone\Support\Surface;
 
 /**
  * The shared runtime every package of the suite stands on.
@@ -18,7 +18,7 @@ use RefactorCircus\Foundation\Support\Surface;
  * registry, the hooks packages give the audit log, the current surface, and
  * a null audit trail until refactor-circus/keen binds a real one.
  */
-class FoundationServiceProvider extends ServiceProvider
+class KeystoneServiceProvider extends ServiceProvider
 {
     public function register(): void
     {

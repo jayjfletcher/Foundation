@@ -1,10 +1,10 @@
 # Changelog
 
-## [Unreleased](https://github.com/Refactor-Circus/Foundation/commits/main)
+## [Unreleased](https://github.com/Refactor-Circus/Keystone/commits/main)
 
 ### Breaking
 
-- Moved to the Refactor Circus organisation: the package is now `refactor-circus/foundation` with the PHP namespace `RefactorCircus\Foundation` (it was `jayi/foundation` and `JayI\Foundation`). Update `composer.json` requirements and `use` statements. Old class names are not kept as aliases, so stored values written under them - polymorphic `*_type` columns, audit subjects, Pennant feature names - need updating to the new names.
+- Renamed Foundation to Keystone and moved to the Refactor Circus organisation: the package is now `refactor-circus/keystone` with the PHP namespace `RefactorCircus\Keystone` (it was `jayi/foundation` and `JayI\Foundation`), and its provider is `KeystoneServiceProvider`. Update `composer.json` requirements and `use` statements. Old class names are not kept as aliases, so stored values written under them - polymorphic `*_type` columns, audit subjects, Pennant feature names - need updating to the new names.
 
 ### Added
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Packages;
+namespace RefactorCircus\Keystone\Packages;
 
 use Closure;
 use Illuminate\Contracts\Auth\Authenticatable;

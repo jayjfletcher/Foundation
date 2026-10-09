@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Auth;
+namespace RefactorCircus\Keystone\Auth;
 
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Database\Eloquent\Model;
-use RefactorCircus\Foundation\Packages\Package;
+use RefactorCircus\Keystone\Packages\Package;
 
 /**
  * How a package's JSON API and MCP tools decide whether the caller may act.

@@ -8,4 +8,4 @@ Only the latest major version receives security fixes.
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within Foundation, please send an email to Jay Fletcher at j.fletcher@seclock.com. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Keystone, please send an email to Jay Fletcher at j.fletcher@seclock.com. All security vulnerabilities will be promptly addressed.

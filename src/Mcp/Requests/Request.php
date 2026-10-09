@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Mcp\Requests;
+namespace RefactorCircus\Keystone\Mcp\Requests;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Mcp\Request as McpRequest;
 use Laravel\Mcp\Response;
 use Laravel\Mcp\ResponseFactory;
-use RefactorCircus\Foundation\Auth\Authorizer;
-use RefactorCircus\Foundation\Exceptions\PackageException;
-use RefactorCircus\Foundation\Packages\Package;
-use RefactorCircus\Foundation\Packages\PackageRegistry;
-use RefactorCircus\Foundation\Support\Surface;
+use RefactorCircus\Keystone\Auth\Authorizer;
+use RefactorCircus\Keystone\Exceptions\PackageException;
+use RefactorCircus\Keystone\Packages\Package;
+use RefactorCircus\Keystone\Packages\PackageRegistry;
+use RefactorCircus\Keystone\Support\Surface;
 
 /**
  * Base MCP request for every package in the suite.

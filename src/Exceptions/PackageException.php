@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Exceptions;
+namespace RefactorCircus\Keystone\Exceptions;
 
 use RuntimeException;
 use Symfony\Component\HttpFoundation\Response;

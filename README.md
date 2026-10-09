@@ -1,15 +1,15 @@
-# Foundation
+# Keystone
 
 The shared, headless runtime for the Refactor Circus package suite (Atrium, Cortex, Impex, Keen, PennantPlus, Polycart, Roster, Showroom).
 
-Foundation has no routes, views or config of its own. It holds the base classes and contracts every package used to copy, so each package works the same way and works without the Atrium dashboard.
+Keystone has no routes, views or config of its own. It holds the base classes and contracts every package used to copy, so each package works the same way and works without the Atrium dashboard.
 
 ## Installation
 
 Packages of the suite require it; an application never needs to install it directly.
 
 ```bash
-composer require refactor-circus/foundation
+composer require refactor-circus/keystone
 ```
 
 ## Describing a package
@@ -17,8 +17,8 @@ composer require refactor-circus/foundation
 A package's main service provider extends `PackageServiceProvider`, describes the package once, and registers it before any domain provider:
 
 ```php
-use RefactorCircus\Foundation\Packages\Package;
-use RefactorCircus\Foundation\Support\PackageServiceProvider;
+use RefactorCircus\Keystone\Packages\Package;
+use RefactorCircus\Keystone\Support\PackageServiceProvider;
 
 final class ShowroomServiceProvider extends PackageServiceProvider
 {
@@ -82,7 +82,7 @@ return [
 
 ## Audit seams
 
-Foundation defines how packages talk to an audit log without depending on one. [refactor-circus/keen](https://github.com/Refactor-Circus/Keen) is the audit log; until it is installed, `AuditTrail` is bound to `NullAuditTrail`.
+Keystone defines how packages talk to an audit log without depending on one. [refactor-circus/keen](https://github.com/Refactor-Circus/Keen) is the audit log; until it is installed, `AuditTrail` is bound to `NullAuditTrail`.
 
 - `Audit\Contracts\AuditTrail`: read entries with an `AuditFilter`, get an `AuditPage` of `AuditEntry` values.
 - `Audit\Contracts\Auditable`: an optional interface for action events that name their subject and context.

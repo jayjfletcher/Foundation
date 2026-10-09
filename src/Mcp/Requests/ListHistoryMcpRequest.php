@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Mcp\Requests;
+namespace RefactorCircus\Keystone\Mcp\Requests;
 
 use Laravel\Mcp\Response;
 use Laravel\Mcp\ResponseFactory;
-use RefactorCircus\Foundation\Audit\Data\AuditEntry;
-use RefactorCircus\Foundation\Audit\History;
+use RefactorCircus\Keystone\Audit\Data\AuditEntry;
+use RefactorCircus\Keystone\Audit\History;
 
 /**
  * A package's audit entries for its history tool. The tool names the package.

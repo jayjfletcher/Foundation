@@ -1,13 +1,13 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "refactor-circus/foundation",
+    "name": "refactor-circus/keystone",
     "description": "Shared headless runtime for the Refactor Circus package suite.",
     "keywords": [
         "laravel",
         "refactor-circus",
-        "foundation"
+        "keystone"
     ],
-    "homepage": "https://github.com/Refactor-Circus/Foundation",
+    "homepage": "https://github.com/Refactor-Circus/Keystone",
     "license": "MIT",
     "authors": [
         {
@@ -34,12 +34,12 @@
     },
     "autoload": {
         "psr-4": {
-            "RefactorCircus\\Foundation\\": "src/"
+            "RefactorCircus\\Keystone\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RefactorCircus\\Foundation\\Tests\\": "tests/",
+            "RefactorCircus\\Keystone\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
@@ -89,7 +89,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "RefactorCircus\\Foundation\\FoundationServiceProvider"
+                "RefactorCircus\\Keystone\\KeystoneServiceProvider"
             ]
         }
     },

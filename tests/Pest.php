@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-use RefactorCircus\Foundation\Tests\TestCase;
+use RefactorCircus\Keystone\Tests\TestCase;
 
 uses(TestCase::class)->in('Feature', 'Unit');

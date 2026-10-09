@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Contracts;
+namespace RefactorCircus\Keystone\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 

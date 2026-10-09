@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RefactorCircus\Foundation\Audit\Data;
+namespace RefactorCircus\Keystone\Audit\Data;
 
 use Illuminate\Database\Eloquent\Model;
 
