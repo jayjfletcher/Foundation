@@ -3,29 +3,29 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Gate;
-use JayI\Foundation\Auth\Authorizer;
-use JayI\Foundation\Exceptions\UnknownPackageException;
-use JayI\Foundation\Packages\Package;
-use JayI\Foundation\Packages\PackageRegistry;
-use JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
-use JayI\Foundation\Tests\Fixtures\Acme\Mcp\AcmeServer;
 use Laravel\Mcp\Server\Registrar;
+use RefactorCircus\Foundation\Auth\Authorizer;
+use RefactorCircus\Foundation\Exceptions\UnknownPackageException;
+use RefactorCircus\Foundation\Packages\Package;
+use RefactorCircus\Foundation\Packages\PackageRegistry;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\AcmeServer;
 
 it('registers a package from its service provider', function (): void {
     $acme = app(PackageRegistry::class)->get('acme');
 
     expect($acme->label)->toBe('Acme')
-        ->and($acme->namespace)->toBe('JayI\Foundation\Tests\Fixtures\Acme')
+        ->and($acme->namespace)->toBe('RefactorCircus\Foundation\Tests\Fixtures\Acme')
         ->and($acme->server)->toBe(AcmeServer::class);
 });
 
 it('finds the package a class belongs to by the longest namespace', function (): void {
     $registry = app(PackageRegistry::class);
-    $registry->register(Package::make('acme_plus', 'JayI\Foundation\Tests\Fixtures\Acme\Plus'));
+    $registry->register(Package::make('acme_plus', 'RefactorCircus\Foundation\Tests\Fixtures\Acme\Plus'));
 
     expect($registry->for(WidgetModel::class)?->key)->toBe('acme')
-        ->and($registry->for('JayI\Foundation\Tests\Fixtures\Acme\Plus\Thing')?->key)->toBe('acme_plus')
-        ->and($registry->for('JayI\Foundation\Tests\Fixtures\AcmeOther\Thing'))->toBeNull()
+        ->and($registry->for('RefactorCircus\Foundation\Tests\Fixtures\Acme\Plus\Thing')?->key)->toBe('acme_plus')
+        ->and($registry->for('RefactorCircus\Foundation\Tests\Fixtures\AcmeOther\Thing'))->toBeNull()
         ->and($registry->for(new WidgetModel)?->key)->toBe('acme');
 });
 

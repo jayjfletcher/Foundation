@@ -5,14 +5,14 @@ This repository is a Laravel package. Keep the package focused, idiomatic, and e
 ## Package Conventions
 
 - Use Laravel-native package APIs and the existing service provider shape before adding abstractions.
-- Keep package names, namespaces, Composer metadata, publish tags, documentation, and examples aligned with `jayi/foundation`.
+- Keep package names, namespaces, Composer metadata, publish tags, documentation, and examples aligned with `refactor-circus/foundation`.
 - Add only the files and dependencies needed for the package behavior being implemented.
 - Prefer explicit Laravel package code over helper abstractions unless the extension point is real.
 - Keep tests focused on observable package behavior through public APIs, service provider wiring, commands, routes, published resources, and documentation promises.
 
 ## Role in the suite
 
-- Foundation is the headless runtime every jayi package requires: base classes, contracts, the package registry and the audit seams. It must never depend on Atrium, Cortex, Keen or any other suite package; optional integrations are referenced only behind `class_exists()` checks.
+- Foundation is the headless runtime every Refactor Circus package requires: base classes, contracts, the package registry and the audit seams. It must never depend on Atrium, Cortex, Keen or any other suite package; optional integrations are referenced only behind `class_exists()` checks.
 - It ships no routes file, views, config or migrations. Behaviour a package opts into (history routes, MCP servers, policies) is a helper on `PackageServiceProvider`.
 - Base classes find their package by namespace through `PackageRegistry`; never hard-code a package key.
 - Value objects expose `public private(set)` properties configured through fluent setters of the same name.

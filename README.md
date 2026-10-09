@@ -1,6 +1,6 @@
 # Foundation
 
-The shared, headless runtime for the jayi package suite (Atrium, Cortex, Impex, Keystone, Keen, PennantPlus, Polycart, Roster).
+The shared, headless runtime for the Refactor Circus package suite (Atrium, Cortex, Impex, Keystone, Keen, PennantPlus, Polycart, Roster).
 
 Foundation has no routes, views or config of its own. It holds the base classes and contracts every package used to copy, so each package works the same way and works without the Atrium dashboard.
 
@@ -9,7 +9,7 @@ Foundation has no routes, views or config of its own. It holds the base classes 
 Packages of the suite require it; an application never needs to install it directly.
 
 ```bash
-composer require jayi/foundation
+composer require refactor-circus/foundation
 ```
 
 ## Describing a package
@@ -17,14 +17,14 @@ composer require jayi/foundation
 A package's main service provider extends `PackageServiceProvider`, describes the package once, and registers it before any domain provider:
 
 ```php
-use JayI\Foundation\Packages\Package;
-use JayI\Foundation\Support\PackageServiceProvider;
+use RefactorCircus\Foundation\Packages\Package;
+use RefactorCircus\Foundation\Support\PackageServiceProvider;
 
 final class KeystoneServiceProvider extends PackageServiceProvider
 {
     protected function definition(): Package
     {
-        return Package::make('keystone', 'JayI\Keystone')
+        return Package::make('keystone', 'RefactorCircus\Keystone')
             ->label('Keystone')
             ->server(KeystoneServer::class);
     }
@@ -82,7 +82,7 @@ return [
 
 ## Audit seams
 
-Foundation defines how packages talk to an audit log without depending on one. [jayi/keen](https://github.com/jayjfletcher/Keen) is the audit log; until it is installed, `AuditTrail` is bound to `NullAuditTrail`.
+Foundation defines how packages talk to an audit log without depending on one. [refactor-circus/keen](https://github.com/Refactor-Circus/Keen) is the audit log; until it is installed, `AuditTrail` is bound to `NullAuditTrail`.
 
 - `Audit\Contracts\AuditTrail`: read entries with an `AuditFilter`, get an `AuditPage` of `AuditEntry` values.
 - `Audit\Contracts\Auditable`: an optional interface for action events that name their subject and context.

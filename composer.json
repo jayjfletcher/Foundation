@@ -1,13 +1,13 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "jayi/foundation",
-    "description": "Shared headless runtime for the jayi package suite.",
+    "name": "refactor-circus/foundation",
+    "description": "Shared headless runtime for the Refactor Circus package suite.",
     "keywords": [
         "laravel",
-        "jayi",
+        "refactor-circus",
         "foundation"
     ],
-    "homepage": "https://github.com/jayjfletcher/Foundation",
+    "homepage": "https://github.com/Refactor-Circus/Foundation",
     "license": "MIT",
     "authors": [
         {
@@ -34,12 +34,12 @@
     },
     "autoload": {
         "psr-4": {
-            "JayI\\Foundation\\": "src/"
+            "RefactorCircus\\Foundation\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "JayI\\Foundation\\Tests\\": "tests/",
+            "RefactorCircus\\Foundation\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
@@ -89,7 +89,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "JayI\\Foundation\\FoundationServiceProvider"
+                "RefactorCircus\\Foundation\\FoundationServiceProvider"
             ]
         }
     },

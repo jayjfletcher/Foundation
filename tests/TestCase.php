@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Tests;
+namespace RefactorCircus\Foundation\Tests;
 
-use JayI\Foundation\FoundationServiceProvider;
-use JayI\Foundation\Tests\Fixtures\Acme\AcmeServiceProvider;
 use Laravel\Mcp\Server\McpServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
+use RefactorCircus\Foundation\FoundationServiceProvider;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\AcmeServiceProvider;
 
 abstract class TestCase extends Orchestra
 {

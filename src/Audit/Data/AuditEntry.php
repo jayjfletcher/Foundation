@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Audit\Data;
+namespace RefactorCircus\Foundation\Audit\Data;
 
 use Carbon\CarbonImmutable;
 use DateTimeInterface;

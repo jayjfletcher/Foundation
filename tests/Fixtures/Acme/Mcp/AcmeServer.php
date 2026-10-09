@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Tests\Fixtures\Acme\Mcp;
+namespace RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp;
 
-use JayI\Foundation\Mcp\Server;
-use JayI\Foundation\Tests\Fixtures\Acme\Mcp\Tools\ListAcmeHistoryTool;
-use JayI\Foundation\Tests\Fixtures\Acme\Mcp\Tools\ProbeTool;
 use Laravel\Mcp\Server\Attributes\Instructions;
 use Laravel\Mcp\Server\Attributes\Name;
 use Laravel\Mcp\Server\Attributes\Version;
 use Laravel\Mcp\Server\Tool;
+use RefactorCircus\Foundation\Mcp\Server;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\Tools\ListAcmeHistoryTool;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\Tools\ProbeTool;
 
 #[Name('Acme')]
 #[Version('1.0.0')]

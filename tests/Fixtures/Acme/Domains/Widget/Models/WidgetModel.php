@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models;
+namespace RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use JayI\Foundation\Models\Concerns\DispatchesModelEvents;
+use RefactorCircus\Foundation\Models\Concerns\DispatchesModelEvents;
 
 /**
  * @property int $id

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\Http\Requests;
+namespace RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Http\Requests;
 
 use Illuminate\Http\JsonResponse;
-use JayI\Foundation\Http\Requests\Request;
-use JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
+use RefactorCircus\Foundation\Http\Requests\Request;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
 
 final class StoreWidgetRequest extends Request
 {

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Http\Requests;
+namespace RefactorCircus\Foundation\Http\Requests;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\FormRequest;
-use JayI\Foundation\Auth\Authorizer;
-use JayI\Foundation\Packages\Package;
-use JayI\Foundation\Packages\PackageRegistry;
+use RefactorCircus\Foundation\Auth\Authorizer;
+use RefactorCircus\Foundation\Packages\Package;
+use RefactorCircus\Foundation\Packages\PackageRegistry;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

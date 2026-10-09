@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Packages;
+namespace RefactorCircus\Foundation\Packages;
 
-use JayI\Foundation\Exceptions\UnknownPackageException;
+use RefactorCircus\Foundation\Exceptions\UnknownPackageException;
 
 /**
  * Every package of the suite that is installed, by key.
@@ -42,7 +42,7 @@ final class PackageRegistry
 
     /**
      * The package a class belongs to: the one with the longest matching
-     * namespace, so `JayI\Atrium` never claims a class of `JayI\AtriumPlus`.
+     * namespace, so `RefactorCircus\Atrium` never claims a class of `RefactorCircus\AtriumPlus`.
      *
      * @param  object|class-string  $class
      */

@@ -8,5 +8,5 @@ parameters:
         # Cortex is optional and cannot be a dev dependency (it requires this
         # package); every Cortex class is referenced behind an active() check.
         -
-            message: '#JayI\\Cortex\\#'
+            message: '#RefactorCircus\\Cortex\\#'
             path: src/Cortex/CortexIntegration.php

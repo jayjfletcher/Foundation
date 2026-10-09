@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Contracts;
+namespace RefactorCircus\Foundation\Contracts;
 
 /**
  * Fired when an action starts, before it does any work.

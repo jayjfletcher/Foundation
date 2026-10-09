@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Event;
-use JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\Events\WidgetCreatedEvent;
-use JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Events\WidgetCreatedEvent;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
 
 it('dispatches the lifecycle event the naming convention points at', function (): void {
     Event::fake([WidgetCreatedEvent::class]);

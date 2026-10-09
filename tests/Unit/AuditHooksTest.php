@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Eloquent\Model;
-use JayI\Foundation\Audit\AuditHooks;
-use JayI\Foundation\Audit\Contracts\AuditTrail;
-use JayI\Foundation\Audit\Data\AuditFilter;
-use JayI\Foundation\Audit\NullAuditTrail;
-use JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
+use RefactorCircus\Foundation\Audit\AuditHooks;
+use RefactorCircus\Foundation\Audit\Contracts\AuditTrail;
+use RefactorCircus\Foundation\Audit\Data\AuditFilter;
+use RefactorCircus\Foundation\Audit\NullAuditTrail;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
 
 it('labels models of a class and its subclasses', function (): void {
     $hooks = (new AuditHooks)->label(WidgetModel::class, fn (WidgetModel $widget): string => 'Widget '.$widget->name);

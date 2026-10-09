@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Policies;
+namespace RefactorCircus\Foundation\Policies;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;

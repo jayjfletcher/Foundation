@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\Events;
+namespace RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Events;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use JayI\Foundation\Contracts\ModelLifecycleEvent;
-use JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
+use RefactorCircus\Foundation\Contracts\ModelLifecycleEvent;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
 
 final class WidgetCreatedEvent implements ModelLifecycleEvent
 {

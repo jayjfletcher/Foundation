@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Support;
+namespace RefactorCircus\Foundation\Support;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use JayI\Foundation\Packages\PackageRegistry;
+use RefactorCircus\Foundation\Packages\PackageRegistry;
 
 /**
  * Which surface the current call came through: `atrium`, `http`, `mcp`,

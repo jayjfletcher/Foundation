@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Tests\Fixtures\Acme;
+namespace RefactorCircus\Foundation\Tests\Fixtures\Acme;
 
-use JayI\Foundation\Packages\Package;
-use JayI\Foundation\Support\PackageServiceProvider;
-use JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\WidgetServiceProvider;
-use JayI\Foundation\Tests\Fixtures\Acme\Mcp\AcmeServer;
+use RefactorCircus\Foundation\Packages\Package;
+use RefactorCircus\Foundation\Support\PackageServiceProvider;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\WidgetServiceProvider;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\AcmeServer;
 
 /**
  * A package of the suite, as small as the shared runtime allows.

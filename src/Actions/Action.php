@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Actions;
+namespace RefactorCircus\Foundation\Actions;
 
 /**
  * Base class for mutating business logic across the suite.

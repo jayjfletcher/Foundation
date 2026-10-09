@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Tests\Fixtures\Acme\Mcp\Requests;
+namespace RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\Requests;
 
-use JayI\Foundation\Mcp\Requests\Request;
-use JayI\Foundation\Support\Surface;
-use JayI\Foundation\Tests\Fixtures\Acme\Exceptions\AcmeException;
 use Laravel\Mcp\Response;
 use Laravel\Mcp\ResponseFactory;
+use RefactorCircus\Foundation\Mcp\Requests\Request;
+use RefactorCircus\Foundation\Support\Surface;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Exceptions\AcmeException;
 
 final class ProbeMcpRequest extends Request
 {

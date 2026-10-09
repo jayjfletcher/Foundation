@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Audit;
+namespace RefactorCircus\Foundation\Audit;
 
-use JayI\Foundation\Audit\Contracts\AuditTrail;
-use JayI\Foundation\Audit\Data\AuditFilter;
-use JayI\Foundation\Audit\Data\AuditPage;
+use RefactorCircus\Foundation\Audit\Contracts\AuditTrail;
+use RefactorCircus\Foundation\Audit\Data\AuditFilter;
+use RefactorCircus\Foundation\Audit\Data\AuditPage;
 
 /**
  * The audit trail while no audit log is installed: never available, always
- * empty. jayi/keen replaces the binding.
+ * empty. refactor-circus/keen replaces the binding.
  */
 final class NullAuditTrail implements AuditTrail
 {

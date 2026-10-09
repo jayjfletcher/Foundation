@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Support;
+namespace RefactorCircus\Foundation\Support;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
-use JayI\Foundation\Cortex\CortexIntegration;
-use JayI\Foundation\FoundationServiceProvider;
-use JayI\Foundation\Http\Controllers\HistoryController;
-use JayI\Foundation\Packages\Package;
-use JayI\Foundation\Packages\PackageRegistry;
 use Laravel\Mcp\Facades\Mcp;
+use RefactorCircus\Foundation\Cortex\CortexIntegration;
+use RefactorCircus\Foundation\FoundationServiceProvider;
+use RefactorCircus\Foundation\Http\Controllers\HistoryController;
+use RefactorCircus\Foundation\Packages\Package;
+use RefactorCircus\Foundation\Packages\PackageRegistry;
 
 /**
  * Base class for a package's main service provider.
@@ -105,7 +105,7 @@ abstract class PackageServiceProvider extends ServiceProvider
      */
     protected function registerAtriumPlugin(string $plugin): void
     {
-        $atrium = 'JayI\\Atrium\\Atrium';
+        $atrium = 'RefactorCircus\\Atrium\\Atrium';
 
         if (! class_exists($atrium) || $this->config()->get($this->package()->configKey('ui.enabled')) !== true) {
             return;
@@ -116,7 +116,7 @@ abstract class PackageServiceProvider extends ServiceProvider
 
     /**
      * Serve `GET {prefix}/history`: the package's audit entries, newest first,
-     * inside its JSON API route group. Answers 404 while jayi/keen is not
+     * inside its JSON API route group. Answers 404 while refactor-circus/keen is not
      * installed.
      */
     protected function loadHistoryRoutes(): void

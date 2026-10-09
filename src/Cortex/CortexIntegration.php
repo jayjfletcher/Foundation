@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Cortex;
+namespace RefactorCircus\Foundation\Cortex;
 
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
-use JayI\Cortex\CortexServiceProvider;
-use JayI\Cortex\Domains\McpServer\Services\McpInstructionOverrides;
-use JayI\Cortex\Domains\McpServer\Services\McpServerRegistry;
-use JayI\Cortex\Domains\Tool\Services\ToolDescriptionOverrides;
-use JayI\Cortex\Domains\Tool\Services\ToolRegistry;
-use JayI\Foundation\Packages\Package;
-use JayI\Foundation\Support\Surface;
 use Laravel\Ai\Events\InvokingTool;
 use Laravel\Ai\Events\ToolFailed;
 use Laravel\Ai\Events\ToolInvoked;
 use Laravel\Ai\Tools\ToolNameResolver;
 use Laravel\Mcp\Server\Tool;
+use RefactorCircus\Cortex\CortexServiceProvider;
+use RefactorCircus\Cortex\Domains\McpServer\Services\McpInstructionOverrides;
+use RefactorCircus\Cortex\Domains\McpServer\Services\McpServerRegistry;
+use RefactorCircus\Cortex\Domains\Tool\Services\ToolDescriptionOverrides;
+use RefactorCircus\Cortex\Domains\Tool\Services\ToolRegistry;
+use RefactorCircus\Foundation\Packages\Package;
+use RefactorCircus\Foundation\Support\Surface;
 
 /**
  * Connects a package's MCP server to Cortex, when Cortex is installed.

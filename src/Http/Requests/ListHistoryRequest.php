@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Http\Requests;
+namespace RefactorCircus\Foundation\Http\Requests;
 
 use Illuminate\Http\JsonResponse;
-use JayI\Foundation\Audit\History;
-use JayI\Foundation\Packages\Package;
-use JayI\Foundation\Packages\PackageRegistry;
+use RefactorCircus\Foundation\Audit\History;
+use RefactorCircus\Foundation\Packages\Package;
+use RefactorCircus\Foundation\Packages\PackageRegistry;
 
 /**
  * `GET {prefix}/history`: a package's audit entries, newest first, cursor
@@ -30,7 +30,7 @@ final class ListHistoryRequest extends Request
         $history = app(History::class);
 
         if (! $history->available()) {
-            return new JsonResponse(['message' => 'No audit log is installed. Install jayi/keen to record history.'], 404);
+            return new JsonResponse(['message' => 'No audit log is installed. Install refactor-circus/keen to record history.'], 404);
         }
 
         /** @var array<string, mixed> $validated */

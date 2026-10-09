@@ -5,13 +5,13 @@ declare(strict_types=1);
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Gate;
-use JayI\Foundation\Audit\Contracts\AuditTrail;
-use JayI\Foundation\Audit\Data\AuditEntry;
-use JayI\Foundation\Packages\PackageRegistry;
-use JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
-use JayI\Foundation\Tests\Fixtures\Acme\Mcp\AcmeServer;
-use JayI\Foundation\Tests\Fixtures\Acme\Mcp\Tools\ListAcmeHistoryTool;
-use JayI\Foundation\Tests\Fixtures\FakeAuditTrail;
+use RefactorCircus\Foundation\Audit\Contracts\AuditTrail;
+use RefactorCircus\Foundation\Audit\Data\AuditEntry;
+use RefactorCircus\Foundation\Packages\PackageRegistry;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Models\WidgetModel;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\AcmeServer;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\Tools\ListAcmeHistoryTool;
+use RefactorCircus\Foundation\Tests\Fixtures\FakeAuditTrail;
 
 function installAuditTrail(): FakeAuditTrail
 {
@@ -37,7 +37,7 @@ function installAuditTrail(): FakeAuditTrail
 it('answers 404 while no audit log is installed', function (): void {
     $this->getJson('/acme/history')
         ->assertNotFound()
-        ->assertJson(['message' => 'No audit log is installed. Install jayi/keen to record history.']);
+        ->assertJson(['message' => 'No audit log is installed. Install refactor-circus/keen to record history.']);
 });
 
 it('serves the package history from the audit trail', function (): void {
@@ -89,7 +89,7 @@ it('guards the whole history with viewAuditLog when the application defines it',
 
 it('offers the same history as an mcp tool', function (): void {
     AcmeServer::tool(ListAcmeHistoryTool::class)
-        ->assertHasErrors(['No audit log is installed, so there is no history to show. Install jayi/keen to record it.']);
+        ->assertHasErrors(['No audit log is installed, so there is no history to show. Install refactor-circus/keen to record it.']);
 
     installAuditTrail();
 

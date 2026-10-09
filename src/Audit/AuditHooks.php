@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Audit;
+namespace RefactorCircus\Foundation\Audit;
 
 use Closure;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * What packages teach the audit log about their own models and events.
  *
  * Packages register hooks from their service providers whether or not
- * jayi/keen is installed; registering costs nothing, and the audit log reads
+ * refactor-circus/keen is installed; registering costs nothing, and the audit log reads
  * them when it records. Every hook is optional.
  *
  *     $hooks->label(RoleModel::class, fn (RoleModel $role) => $role->name);

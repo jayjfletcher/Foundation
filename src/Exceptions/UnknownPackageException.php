@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Exceptions;
+namespace RefactorCircus\Foundation\Exceptions;
 
 use LogicException;
 

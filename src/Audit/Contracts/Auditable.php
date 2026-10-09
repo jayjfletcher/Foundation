@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Audit\Contracts;
+namespace RefactorCircus\Foundation\Audit\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 

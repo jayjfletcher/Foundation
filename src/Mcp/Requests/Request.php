@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Mcp\Requests;
+namespace RefactorCircus\Foundation\Mcp\Requests;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
-use JayI\Foundation\Auth\Authorizer;
-use JayI\Foundation\Exceptions\PackageException;
-use JayI\Foundation\Packages\Package;
-use JayI\Foundation\Packages\PackageRegistry;
-use JayI\Foundation\Support\Surface;
 use Laravel\Mcp\Request as McpRequest;
 use Laravel\Mcp\Response;
 use Laravel\Mcp\ResponseFactory;
+use RefactorCircus\Foundation\Auth\Authorizer;
+use RefactorCircus\Foundation\Exceptions\PackageException;
+use RefactorCircus\Foundation\Packages\Package;
+use RefactorCircus\Foundation\Packages\PackageRegistry;
+use RefactorCircus\Foundation\Support\Surface;
 
 /**
  * Base MCP request for every package in the suite.

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Tests\Fixtures\Acme\Mcp\Tools;
+namespace RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\Tools;
 
 use Illuminate\Contracts\JsonSchema\JsonSchema;
-use JayI\Foundation\Mcp\Tool;
-use JayI\Foundation\Tests\Fixtures\Acme\Mcp\Requests\ProbeMcpRequest;
 use Laravel\Mcp\Response;
 use Laravel\Mcp\ResponseFactory;
 use Laravel\Mcp\Server\Attributes\Description;
+use RefactorCircus\Foundation\Mcp\Tool;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\Requests\ProbeMcpRequest;
 
 #[Description('Report the surface the call came through.')]
 final class ProbeTool extends Tool

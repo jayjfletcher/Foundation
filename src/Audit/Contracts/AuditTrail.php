@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Audit\Contracts;
+namespace RefactorCircus\Foundation\Audit\Contracts;
 
-use JayI\Foundation\Audit\Data\AuditFilter;
-use JayI\Foundation\Audit\Data\AuditPage;
+use RefactorCircus\Foundation\Audit\Data\AuditFilter;
+use RefactorCircus\Foundation\Audit\Data\AuditPage;
 
 /**
  * Read access to the audit log, whichever package keeps it.
  *
  * Every package and the Atrium dashboard read history through this contract,
- * so none of them depends on jayi/keen. Until it is installed the shared
+ * so none of them depends on refactor-circus/keen. Until it is installed the shared
  * runtime binds `NullAuditTrail`, which is never available and always empty.
  */
 interface AuditTrail

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Packages;
+namespace RefactorCircus\Foundation\Packages;
 
 use Closure;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -17,7 +17,7 @@ use Laravel\Mcp\Server;
  * (`keystone`); the namespace is how a class is traced back to the package
  * that owns it, so base classes find their package without being told.
  *
- *     Package::make('keystone', 'JayI\Keystone')
+ *     Package::make('keystone', 'RefactorCircus\Keystone')
  *         ->label('Keystone')
  *         ->server(KeystoneServer::class);
  */

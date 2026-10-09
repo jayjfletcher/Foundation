@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget;
+namespace RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget;
 
 use Illuminate\Support\Facades\Route;
-use JayI\Foundation\Support\ServiceProvider;
-use JayI\Foundation\Tests\Fixtures\Acme\Domains\Widget\Http\Controllers\WidgetController;
+use RefactorCircus\Foundation\Support\ServiceProvider;
+use RefactorCircus\Foundation\Tests\Fixtures\Acme\Domains\Widget\Http\Controllers\WidgetController;
 
 final class WidgetServiceProvider extends ServiceProvider
 {

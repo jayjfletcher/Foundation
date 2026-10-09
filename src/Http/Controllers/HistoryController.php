@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Http\Controllers;
+namespace RefactorCircus\Foundation\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use JayI\Foundation\Http\Requests\ListHistoryRequest;
+use RefactorCircus\Foundation\Http\Requests\ListHistoryRequest;
 
 final class HistoryController
 {

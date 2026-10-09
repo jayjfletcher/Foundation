@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Tests\Fixtures;
+namespace RefactorCircus\Foundation\Tests\Fixtures;
 
-use JayI\Foundation\Audit\Contracts\AuditTrail;
-use JayI\Foundation\Audit\Data\AuditEntry;
-use JayI\Foundation\Audit\Data\AuditFilter;
-use JayI\Foundation\Audit\Data\AuditPage;
+use RefactorCircus\Foundation\Audit\Contracts\AuditTrail;
+use RefactorCircus\Foundation\Audit\Data\AuditEntry;
+use RefactorCircus\Foundation\Audit\Data\AuditFilter;
+use RefactorCircus\Foundation\Audit\Data\AuditPage;
 
 /**
  * An installed audit log that remembers the last filter it was asked for.

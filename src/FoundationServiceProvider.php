@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation;
+namespace RefactorCircus\Foundation;
 
 use Illuminate\Support\ServiceProvider;
-use JayI\Foundation\Audit\AuditHooks;
-use JayI\Foundation\Audit\Contracts\AuditTrail;
-use JayI\Foundation\Audit\NullAuditTrail;
-use JayI\Foundation\Packages\PackageRegistry;
-use JayI\Foundation\Support\Surface;
+use RefactorCircus\Foundation\Audit\AuditHooks;
+use RefactorCircus\Foundation\Audit\Contracts\AuditTrail;
+use RefactorCircus\Foundation\Audit\NullAuditTrail;
+use RefactorCircus\Foundation\Packages\PackageRegistry;
+use RefactorCircus\Foundation\Support\Surface;
 
 /**
  * The shared runtime every package of the suite stands on.
  *
  * It has no routes, views or config of its own: it holds the package
  * registry, the hooks packages give the audit log, the current surface, and
- * a null audit trail until jayi/keen binds a real one.
+ * a null audit trail until refactor-circus/keen binds a real one.
  */
 class FoundationServiceProvider extends ServiceProvider
 {

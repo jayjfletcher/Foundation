@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Tests\Fixtures\Acme\Mcp\Tools;
+namespace RefactorCircus\Foundation\Tests\Fixtures\Acme\Mcp\Tools;
 
-use JayI\Foundation\Mcp\Tools\ListHistoryTool;
+use RefactorCircus\Foundation\Mcp\Tools\ListHistoryTool;
 
 final class ListAcmeHistoryTool extends ListHistoryTool {}

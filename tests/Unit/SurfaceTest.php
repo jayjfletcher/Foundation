@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
-use JayI\Foundation\Support\Surface;
+use RefactorCircus\Foundation\Support\Surface;
 
 function surfaceForRoute(string $name): string
 {

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace JayI\Foundation\Mcp\Tools;
+namespace RefactorCircus\Foundation\Mcp\Tools;
 
 use Illuminate\Contracts\JsonSchema\JsonSchema;
-use JayI\Foundation\Mcp\Requests\ListHistoryMcpRequest;
-use JayI\Foundation\Mcp\Tool;
 use Laravel\Mcp\Response;
 use Laravel\Mcp\ResponseFactory;
+use RefactorCircus\Foundation\Mcp\Requests\ListHistoryMcpRequest;
+use RefactorCircus\Foundation\Mcp\Tool;
 
 /**
  * Base for a package's history tool: its audit entries, newest first.
@@ -28,7 +28,7 @@ abstract class ListHistoryTool extends Tool
     {
         $package = $this->package();
         $declared = "List {$package->label}'s audit history, newest first: who did what, through which surface, and which fields changed. "
-            .'Pass subject_type and subject_id for one record\'s history. Cursor paginated. Needs jayi/keen installed.';
+            .'Pass subject_type and subject_id for one record\'s history. Cursor paginated. Needs refactor-circus/keen installed.';
 
         return parent::description() === '' ? $declared : parent::description();
     }
